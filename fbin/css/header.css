@@ -1,0 +1,137 @@
+.header {
+    margin-top: 2%;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-nav {
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+}
+
+.header-nav .nav-link {
+    color: #070E46;
+    margin: 0;
+    margin-left: 16px;
+    font-family: 'BentonSansBBVA_Medium', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0%;
+}
+
+.header-nav .bbva-link {
+    background: #FFFFFF;
+    color: #001391;
+    font-weight: 500;
+    font-size: 15.01px;
+    line-height: 24px;
+    font-family: 'BentonSansBBVA_Medium', Helvetica, Arial, sans-serif;
+    letter-spacing: 0%;
+    text-align: center;
+}
+
+.bbva-link {
+    padding: 20px 30px;
+    border-radius: 13px;
+    display: inline-block;
+}
+
+.bbva-link:hover {
+    background-color: transparent;
+}
+
+.headerLogo {
+    width: 264px;
+    height: auto;
+    margin-left: 0;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    cursor: default;
+}
+
+.logo-placeholder {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 14px 0 !important;
+    }
+
+    .icono-lock {
+        width: 10.67px !important;
+    }
+
+    .header-content.container {
+        padding-left: 15px;
+    }
+
+    .headerLogo {
+        width: 120px;
+        margin-left: 0;
+    }
+
+    .nav-link {
+        font-size: 16px;
+        font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+        font-weight: 350;
+        line-height: 32px;
+    }
+
+    .breadcrumb-notice {
+        font-size: 12px !important;
+        line-height: 16px !important;
+        font-weight: 350 !important;
+    }
+
+    .header-nav .nav-link {
+        margin-left: -3%;
+    }
+    
+    .bbva-link {
+        display: none; 
+    }
+
+    .container {
+        margin-top: 9% !important;
+    }
+}
+
+/*@media (max-width: 768px) {
+    .logo {
+        width: 96%;
+    }
+
+    .headerLogo {
+        width: 145px;
+    }
+}*/
+
+@media (max-width: 768px) {
+    .logo {
+        width: auto; /* Antes decía 96%, lo cambiamos para no acaparar todo el espacio */
+    }
+
+    .headerLogo {
+        width: 145px; /* Ajuste ideal para que el texto quepa a la derecha */
+    }
+}

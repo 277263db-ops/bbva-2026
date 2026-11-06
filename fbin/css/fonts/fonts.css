@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'BentonSansBBVA_Bold';
+    src: url('BentonSansBBVA-Bold.otf') format('opentype');
+    font-style: normal;
+    font-weight: 700
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA_Book';
+    src: url('BentonSansBBVA-Book.otf') format('opentype');
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA_BookItalic';
+    src: url('BentonSansBBVA-BookItalic.otf') format('opentype');
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA_Medium';
+    src: url('BentonSansBBVA-Medium.otf') format('opentype');
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA_MediumItalic';
+    src: url('BentonSansBBVA-MediumItalic.otf') format('opentype');
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'BentonSansBBVA_Light';
+    src: url('BentonSansBBVA-Light.otf') format('opentype');
+    font-style: normal;
+    font-weight: 200
+}
+
+@font-face {
+    font-family: 'TiempoHeadline_Bold';
+    src: url('TiemposHeadline-Bold.otf') format('opentype');
+    font-style: normal;
+    font-weight: 700
+}
+
+@font-face {
+    font-family: 'TiempoHeadline_BoldItalic';
+    src: url('TiemposHeadline-BoldItalic.otf') format('opentype');
+    font-style: normal;
+    font-weight: 700
+}

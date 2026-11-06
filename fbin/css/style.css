@@ -1,0 +1,64 @@
+:root {
+    --bbva-blue-dark: #070E46;      
+    --bbva-blue-light: #001391; 
+    --bbva-background: #f7f8f8;
+    --bbva-light-bg: #f5f8fa;
+    --bbva-info-panel-bg: #e6f1f8;
+    --bbva-border-color: #ced4da;
+    --bbva-label-color: #6c757d;
+    --bbva-warning: #ffc107;
+    --bbva-white: #ffffff;
+    --bbva-bordes-inputs: #46536d;
+    --barra-color: #adb8c2;
+    --border-radius: 14px;
+    --bbva-text-color: #212529;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    color: var(--bbva-blue-dark);
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 100%;
+    background-color: var(--bbva-background);
+    color: var(--bbva-text-color);
+    line-height: 1.6;
+    position: relative;
+    height: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--bbva-blue-light);
+    font-family: 'BentonSansBBVA_Bold', Helvetica, Arial, sans-serif;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.logo-placeholder {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--bbva-blue-dark);
+    padding: 5px 0;
+}
+
+.IrBBVA {
+    background-color: var(--bbva-white);
+    color: #001391;
+    border: 0 solid var(--bbva-white);
+    width: 40%;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s;
+    height: 56px;
+}

@@ -1,0 +1,878 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    background-color: var(--bbva-light-bg);
+    color: var(--bbva-text-color);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: var(--bbva-blue-light);
+    font-family: 'BentonSansBBVA_Bold', Helvetica, Arial, sans-serif;
+}
+
+.container {
+    max-width: 1224px;
+    margin: 0 auto;
+}
+
+.logo-placeholder {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--bbva-blue-dark);
+    padding: 5px 0;
+}
+
+.main-content {
+    padding: 24px 0 0 0;
+}
+
+.breadcrumb-notice {
+    width: 100%;
+    font-size: 12px;
+    line-height: 16px;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    font-weight: 350;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 1224px;
+}
+
+.icono-lock {
+    width: 14px;
+    margin-left: 16px;
+}
+
+.icono-info {
+    width: 20px;
+    margin-top: 4px;
+}
+
+.breadcrumb-notice i {
+    color: var(--bbva-warning);
+    margin-right: 5px;
+}
+
+/* 1. Ajuste del contenedor padre para distribución precisa */
+.access-area {
+    display: flex !important;
+    gap: 31px !important; /* Calibración exacta de espacio inter-columnas */
+    margin-top: 24px;
+}
+
+/* 2. Permite a la columna principal abarcar los 879px nativos */
+.form-column {
+    flex: 1 1 809px !important;
+    max-width: 809px !important;
+    width: 100% !important;
+    background-color: #ffffff;
+    padding: 20px 30px;
+    border-radius: 13px;
+    box-sizing: border-box;
+    height: 472px;
+}
+
+/* 3. Mantiene fija la columna de información de la derecha */
+.info-column {
+    flex: 0 0 394px !important;
+    max-width: 394px !important;
+    width: 100% !important;
+}
+
+/* 4. Resguardo Responsivo para Tablets y Móviles */
+@media (max-width: 992px) {
+    .access-area {
+        flex-direction: column !important;
+        gap: 30px !important;
+    }
+    
+    .form-column, 
+    .info-column {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+.welcome-title {
+    font-size: 40px;
+    line-height: 48px;
+    font-weight: 700;
+    color: var(--bbva-blue-dark, #070E46);
+    font-family: 'TiempoHeadline_Bold', Helvetica, Arial, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-wrapper {
+    position: relative;
+    border: 1px solid var(--bbva-border-color);
+    border-radius: var(--border-radius);
+    padding: 25px 35px 10px 10px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background-color: var(--bbva-background);
+    margin-left: 1%;
+    font-size: 15px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15.01px;
+    line-height: 24px;
+    font-weight: 350;
+    font-family: 'BentonSansBBVA_Book';
+    color: var(--bbva-text-color);
+    padding: 0;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--bbva-blue-light);
+}
+
+.form-group label {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 12px;
+    color: var(--bbva-label-color);
+    background: var(--bbva-background);
+    padding: 0 5px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.document-type .input-wrapper {
+    border-color: var(--bbva-blue-light); 
+}
+
+.document-type label {
+    color: var(--bbva-blue-light);
+}
+
+.document-type input {
+    font-size: 15px;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    width: 99%;
+    margin-left: 1%;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.hidden-select {
+    display: none;
+}
+
+.custom-select-wrapper.has-value .custom-select-label,
+.custom-select-trigger:focus + .custom-select-label,
+.custom-select-trigger.active + .custom-select-label {
+    top: 5px;
+    left: 6px;
+    font-size: 12px;
+    color: var(--bbva-label-color);
+    z-index: 2;
+    background: transparent;
+    line-height: 16px;
+    font-weight: 350;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+}
+
+#FrecuentesLabel {
+    display: none;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    margin-left: 1%;
+    user-select: none;
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--bbva-bordes-inputs);
+    border-radius: 4px;
+    margin-right: 8px;
+    transition: all 0.2s;
+    background: white;
+    position: relative;
+    outline: none;
+    margin-left: 0;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    border-color: var(--bbva-blue-dark);
+    background-image: url(https://assets.caasbbva.com/venezuela/net/assets-spherica/iconos/checkmark.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:30px;
+}
+
+.checkbox-group label {
+    margin: 0;
+    font-size: 15.01px;
+    font-weight: 350;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    line-height: 24px;
+    color: var(--bbva-blue-dark);
+    user-select: none;
+}
+
+.custom-select-trigger {
+    position: relative;
+    height: 55px;
+    border: 2px solid var(--bbva-bordes-inputs);
+    border-radius: 6px;
+    background-color: var(--bbva-background);
+    color: var(--bbva-text-color);
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    z-index: 0;
+    width: 96%;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+}
+
+.custom-select-trigger:focus {
+    outline: none;
+    border-color: var(--bbva-blue-light);
+    box-shadow: 0 0 0 1px var(--bbva-blue-light);
+}
+
+.custom-select-trigger.active {
+    border-color: var(--bbva-blue-light);
+    box-shadow: 0 0 0 1px var(--bbva-blue-light);
+}
+
+.selected-value {
+    flex-grow: 1;
+    margin-left: -4px;
+    margin-top: 15px;
+    font-size: 15.01px;
+    font-weight: 350;
+    line-height: 24px;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+}
+
+.icono-flecha, .icono-dentro {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    margin-right: 0;
+}
+
+.icono-dentro2 {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+    z-index: 900;
+}
+
+.custom-select-trigger.active .icono-flecha {
+    transform: rotate(180deg);
+}
+
+.custom-options-container {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 96%;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    background-color: var(--bbva-white);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.custom-select-trigger.active + .custom-options-container {
+    display: block;
+}
+
+.custom-option {
+    padding: 12px 15px;
+    font-size: 16px;
+    color: var(--bbva-text-color);
+    border-bottom: 1px solid #eee;
+    width: 96%;
+    margin: 2% auto;
+    border-radius: 6px;
+    background: var(--bbva-background);
+}
+
+.custom-option:last-child {
+    border-bottom: none; 
+    border-radius: 0 0 8px 8px;
+}
+
+.custom-option:hover {
+    background-color: var(--bbva-blue-light);
+    color: var(--bbva-white);
+    width: 96%;
+    margin: 2% auto;
+    border-radius: 6px;
+}
+
+.icono-flecha.rotated {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.input-con-icono {
+    position: relative;
+    display: flex; 
+    align-items: center;
+}
+
+.icono-password {
+    position: absolute;
+    right: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    pointer-events: auto;
+    width: 20px; 
+    height: auto;
+}
+
+.input-con-icono .icono-dentro {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    right: 3%;
+}
+
+.input-wrapper .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-20%); 
+    color: var(--bbva-label-color);
+    font-size: 1.1em;
+}
+
+.form-group.document-type {
+    position: relative; 
+}
+
+.input-wrapper.custom-dropdown-trigger {
+    position: relative; 
+    border: 2px solid var(--bbva-bordes-inputs);
+    border-radius: 4px; 
+    width: 95%;
+}
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.btn {
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: var(--bbva-blue-light);
+    color: var(--bbva-background);
+}
+
+.boton-submit {
+    width: 108px;
+    height: 48px;
+    font-size: 15.01px;
+    font-weight: 500;
+    line-height: 24px;
+    font-family: 'BentonSansBBVA_Medium', Helvetica, Arial, sans-serif;
+    will-change: background-position;
+    background-size: 210% 100%;
+    background-position: 99% center;
+    transition: background-position .66667s cubic-bezier(.24, .22, .31, 1.07);
+    /*background-image: linear-gradient(100deg, var(--bbva-blue-dark) 50%, var(--bbva-blue-light) 50%);*/
+    background-color: var(--bbva-blue-light, #001391);
+}
+
+.boton-submit:hover {
+    background-position: 0 center;
+    background-color: #070E46;
+}
+
+.link-forgot, .link-forgot2 {
+    color: var(--bbva-blue-light, #001391);
+    font-family: 'BentonSansBBVA_Medium', Helvetica, Arial, sans-serif;
+    font-size: 15.01px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.link-forgot:hover {
+    color: var(--bbva-blue-dark);
+}
+
+.info-column {
+    flex: 1; 
+    max-width: 394px;
+    width: 100%;
+}
+
+.security-panel {
+    background-color: var(--bbva-white);
+    padding: 30px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}
+
+.icono-seguridad {
+    width: 168px;
+}
+
+.security-icon-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.security-shield {
+    color: var(--bbva-blue-light);
+    font-size: 3.5em;
+    background-color: var(--bbva-background);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.security-warning {
+    position: absolute;
+    bottom: 0;
+    right: -5px;
+    color: var(--bbva-warning);
+    background-color: var(--bbva-background);
+    border-radius: 50%;
+    padding: 2px;
+    font-size: 0.9em;
+}
+
+.security-title {
+    font-size: 32px;
+    color: var(--bbva-blue-dark);
+    margin-bottom: 10px;
+    font-family: 'TiempoHeadline_Bold', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 40px;
+    width: 80%;
+}
+
+.security-text {
+    font-size: 15.01px;
+    color: var(--bbva-blue-dark, #070E46);
+    margin-bottom: 17px;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    font-weight: 350;
+    line-height: 24px;
+    width: 90%;
+}
+
+.remember-panel {
+    background-color: var(--bbva-info-panel-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+}
+
+.remember-title {
+    font-size: 16px;
+}
+
+.remember-text {
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.info-icon {
+    color: var(--bbva-blue-dark);
+    font-size: 1.5em;
+    flex-shrink: 0;
+}
+
+#nuevoIngreso {
+    margin-top: 35%;
+    color: var(--bbva-blue-light);
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-left: -3%;
+}
+
+.info-extra-blue {
+    background-color: #D6E9F8;
+    border-radius: 8px;        
+    padding: 20px;
+    margin-top: 24px;
+    color: #070E46;
+    margin: 24px 0;
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.icoInfo {
+    width: 19.2px;
+    height: 19.2px;
+}
+
+.recordarText {
+    font-family: 'BentonSansBBVA_Medium', Helvetica, Arial, sans-serif;
+    margin: 0;
+    font-size: 15.01px;
+    font-weight: 500;
+    color: #072146;
+    line-height: 24px;
+}
+
+.info-desc {
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    margin: 0;
+    font-size: 15.01px;
+    font-weight: 500;
+    color: #072146;
+    line-height: 24px;
+    margin-left: 8%;
+}
+
+.login-compacto {
+    padding-top: 0;
+    padding-bottom: 20px;
+    margin-top: 0;
+    transition: all 0.3s ease;     
+    height: 295px;
+}
+
+#password:focus {
+    z-index: 1; 
+    position: relative;
+}
+
+.recuperar2 b {
+    font-family: 'BentonSansBBVA_Medium', Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 15.01px;
+    line-height: 24px;
+    color: #001391;
+}
+
+@media (max-width: 768px) {
+    .form-column {
+        padding: 15px !important;
+    }
+
+    .custom-select-trigger {
+        width: 99% !important;
+    }
+
+    .input-wrapper.custom-dropdown-trigger {
+        width: 98% !important;
+    }
+
+    .boton-submit {
+        width: 100% !important;
+    }
+
+    .info-extra-blue {
+        margin-bottom: 15px !important;
+    }
+
+    #h_titulo_clave {
+        margin-top: 0% !important;
+    }
+
+    #nuevoIngreso {
+        display: block;
+        margin-top: 25px;
+        margin-bottom: -55px;
+        text-align: left;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .info-column {
+        margin-top: 30px;
+    }
+
+    .info-extra-blue {
+        margin-top: 20px;
+    }
+
+    .input-con-icono .icono-dentro {
+        right: 5%;
+    }
+}
+
+@media (max-width: 992px) {
+    .access-area {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .form-column, .info-column {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .link-forgot {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .header-nav {
+        width: 100%;
+    }
+
+    .header-nav .nav-link {
+        margin-left: 0;
+        font-family: 'BentonSansBBVA_Book';
+        font-size: 16px !important;
+    }
+    
+    .header-nav span {
+        display: none; 
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .social-icons {
+        margin-top: 5px;
+    }
+}
+
+/* Contenedor de la lista */
+.security-list {
+    list-style: none; /* Quitamos los bullets nativos rotos */
+    margin: 0;
+    padding: 0;       /* Reseteamos el padding */
+    color: #121212;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Cada elemento de la lista */
+.security-list li {
+    position: relative;
+    padding-left: 30px; /* Espacio para nuestra propia viñeta */
+    margin-bottom: 10px !important;
+}
+
+/* La última viñeta no lleva margen abajo */
+.security-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Construcción de la viñeta perfecta (Imagen 1) */
+.security-list li::before {
+    content: "";
+    position: absolute;
+    left: 0px;                  /* Lo movemos un poco más a la izquierda para dar aire al texto */
+    top: 10px;                  /* Ajuste fino para que quede centrado con la primera línea de texto */
+    width: 14px;                /* Ancho de la píldora horizontal */
+    height: 6px;                /* Alto de la píldora */
+    background-color: #071b45;  /* Azul oscuro idéntico al de la imagen */
+    border-radius: 3px;         /* Mitad del alto para que los bordes sean perfectamente redondeados */
+    display: inline-block;
+}
+
+/* Estilo para resaltar la URL de Provincial */
+.security-list strong {
+    font-family: 'BentonSansBBVA-Bold', sans-serif;
+    color: #072146; /* Azul corporativo */
+    font-weight: bold;
+}
+
+.form-floating > label {
+    padding: 1.2rem .75rem !important;
+    color: #46536D;
+    font-weight: 350;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+
+
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS PARA LABELS FLOTANTES CENTRADOS (CÉDULA Y PASSWORD)
+   ========================================================================== */
+
+/* Ajustamos el contenedor de cédula y password para la transición */
+#inputCedula.input-wrapper,
+.password-input.input-wrapper {
+  position: relative !important;
+  height: 56px !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+/* Centrado del texto que escribe el usuario y espacio superior interno */
+#inputCedula.input-wrapper input {
+    width: 100% !important;
+    height: 100% !important;
+    text-align: left !important;
+    padding-top: 18px !important;
+    padding-bottom: 2px !important;
+    padding-left: 12px !important;
+    padding-right: 45px !important;
+    font-size: 15px !important;
+    box-sizing: border-box !important;
+}
+
+.password-input.input-wrapper input {
+    width: 100% !important;
+    height: 100% !important;
+    text-align: left !important;
+    padding-top: 18px !important;
+    padding-bottom: 2px !important;
+    padding-left: 12px !important;
+    padding-right: 45px !important;
+    font-size: 15px !important;
+    box-sizing: border-box !important;
+}
+
+/* Ocultar placeholders nativos */
+#inputCedula.input-wrapper input::placeholder,
+.password-input.input-wrapper input::placeholder {
+  color: transparent !important;
+}
+
+.input-wrapper .floating-label {
+    position: absolute !important;
+    top: 50% !important;
+    left: 90px !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 15px !important;
+    color: #767676 !important;
+    pointer-events: none !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 4 !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    display: block !important;
+    width: auto !important;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    font-weight: 350;
+}
+
+.input-wrapper .floating-label-password {
+    position: absolute !important;
+    top: 50% !important;
+    left: 64px !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 15px !important;
+    color: #767676 !important;
+    pointer-events: none !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 4 !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    display: block !important;
+    width: auto !important;
+    font-family: 'BentonSansBBVA_Book', Helvetica, Arial, sans-serif;
+    font-weight: 350;
+}
+
+/* --- ANIMACIÓN FLUIDA HACIA ARRIBA --- */
+/* Se activa al hacer clic (:focus) o si el campo ya tiene texto escrito */
+#inputCedula.input-wrapper input:focus ~ .floating-label,
+#inputCedula.input-wrapper input:not(:placeholder-shown) ~ .floating-label {
+    top: 2px !important;
+    left: 76px !important;
+    transform: translate(-50%, 0) scale(0.82) !important;
+    color: #46536D !important;
+}
+
+.password-input.input-wrapper input:focus ~ .floating-label,
+.password-input.input-wrapper input:not(:placeholder-shown) ~ .floating-label {
+    top: 2px !important;
+    left: 56px !important;
+    transform: translate(-50%, 0) scale(0.82) !important;
+    color: #46536D !important;
+}
+
+/* Asegurar prioridad visual para iconos sobre el label flotante */
+.input-wrapper img {
+  z-index: 5 !important;
+}
+
+/* Oculta las etiquetas externas residuales SOLO de los campos modificados */
+.form-group.rel > label:not(.floating-label),
+.form-group:has(.password-input) > label:not(.floating-label) {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+    .input-wrapper .floating-label {
+        left: 54% !important;
+        width: 100% !important;
+    }
+
+    .input-wrapper .floating-label-password {
+        left: 54% !important;
+    }
+
+    #inputCedula.input-wrapper input:focus ~ .floating-label, #inputCedula.input-wrapper input:not(:placeholder-shown) ~ .floating-label {
+        left: 44.5% !important;
+    }
+
+    .password-input.input-wrapper input:focus ~ .floating-label, .password-input.input-wrapper input:not(:placeholder-shown) ~ .floating-label {
+        left: 44.5% !important;
+    }
+}
